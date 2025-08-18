@@ -1,46 +1,46 @@
-import random  # Importa la librería 'random' para generar la jugada de la computadora de forma aleatoria 
-import os     # Importa la librería 'os' para interactuar con el sistema operativo (en este caso, para limpiar la consola)
+import random  
+import os     
 
-# Variables globales
-registro_partidas = []  # Lista para almacenar las estadísticas de las partidas jugadas
 
-# Función para limpiar la consola
+registro_partidas = []  
+
+
 def limpiar_pantalla():
-    # Limpia la consola dependiendo del sistema operativo
+    # Limpia la consola dependiendo del sistema operativ0
     os.system('cls' if os.name == 'nt' else 'clear')
 
 # Función para mostrar el menú principal
 def mostrar_menu_inicial():
-    limpiar_pantalla()  # Limpia la pantalla antes de mostrar el menú
+    limpiar_pantalla()  
     print("="*50)
     print("¡Bienvenido al juego de Piedra, Papel o Tijera!")
     print("="*50)
-    print("1. Comenzar juego")  # Opción para comenzar a jugar
-    print("2. Ver instrucciones")  # Opción para ver las reglas
-    print("3. Salir")  # Opción para salir del juego
+    print("1. Comenzar juego")  
+    print("2. Ver instrucciones")  
+    print("3. Salir")  
     print("="*50)
 
 # Función para mostrar el menú de opciones del juego
 def menu_opciones_juego():
-    limpiar_pantalla()  # Limpia la pantalla antes de mostrar el menú de juego
+    limpiar_pantalla()  
     print("===================================")
     print("Opciones de Juego")
     print("===================================")
-    print("1. Jugar contra la computadora")  # Opción para jugar contra la computadora
-    print("2. Jugar en pareja")  # Opción para jugar en pareja
-    print("3. Ver estadísticas")  # Opción para ver las estadísticas
-    print("4. Regresar al menú principal")  # Opción para volver al menú principal
+    print("1. Jugar contra la computadora")  
+    print("2. Jugar en pareja")  
+    print("3. Ver estadísticas")  
+    print("4. Regresar al menú principal")  
     print("===================================")
 
 # Función para mostrar las reglas del juego
 def mostrar_instrucciones():
-    limpiar_pantalla()  # Limpia la pantalla antes de mostrar las reglas
+    limpiar_pantalla()  
     print("\nReglas del juego:")
-    print("1. Piedra vence a Tijeras.")  # Regla: Piedra vence a tijeras
-    print("2. Tijeras vence a Papel.")  # Regla: Tijeras vence a papel
-    print("3. Papel vence a Piedra.")  # Regla: Papel vence a piedra
-    print("4. El objetivo es ganar más rondas que tu oponente.\n")  # Objetivo del juego
-    input("Presiona Enter para volver al menú principal...")  # Espera que el jugador presione Enter para regresar al menú
+    print("1. Piedra vence a Tijeras.")  
+    print("2. Tijeras vence a Papel.")  
+    print("3. Papel vence a Piedra.")  
+    print("4. El objetivo es ganar más rondas que tu oponente.\n")  
+    input("Presiona Enter para volver al menú principal...")  
 
 # Función para obtener la elección del jugador
 def seleccionar_eleccion():
@@ -105,7 +105,7 @@ def jugar_con_computadora():
                 break  # Si el jugador no quiere continuar, termina el juego
         else:
             input("Presiona Enter para continuar a la siguiente ronda...")  # Espera a que el jugador presione Enter
-        ronda_actual += 1  # Incrementa el contador de rondas
+        ronda_actual += 1  #
 
     # Muestra el resultado final después de todas las rondas
     print(f"\nResultado final: {jugador_nombre}: {puntos_jugador} - Computadora: {puntos_computadora}")
@@ -113,14 +113,14 @@ def jugar_con_computadora():
     registro_partidas.append(f"Jugador: {jugador_nombre} | Rondas jugadas: {ronda_actual-1} | Ganó: {puntos_jugador} | Computadora: {puntos_computadora}")
     input("Presiona Enter para continuar...")
 
-# Función para jugar en pareja
-def jugar_en_pareja():
-    jugador1_nombre = input("Ingresa el nombre del Jugador 1: ")  # Solicita el nombre del jugador 1
-    jugador2_nombre = input("Ingresa el nombre del Jugador 2: ")  # Solicita el nombre del jugador 2
-    puntos_jugador1, puntos_jugador2 = 0, 0  # Inicializa los puntos de ambos jugadores
-    rondas = cantidad_de_rondas()  # Obtiene la cantidad de rondas
 
-    ronda_actual = 1  # Inicializa el contador de rondas
+def jugar_en_pareja():
+    jugador1_nombre = input("Ingresa el nombre del Jugador 1: ")  
+    jugador2_nombre = input("Ingresa el nombre del Jugador 2: ")  
+    puntos_jugador1, puntos_jugador2 = 0, 0  
+    rondas = cantidad_de_rondas()  
+
+    ronda_actual = 1  
     while True:
         limpiar_pantalla()  # Limpia la pantalla en cada ronda
         print(f"\nRonda {ronda_actual}")
@@ -129,79 +129,79 @@ def jugar_en_pareja():
         eleccion_jugador1 = seleccionar_eleccion()  # Obtiene la elección del jugador 1
         limpiar_pantalla()
 
-        input(f"{jugador2_nombre}, presiona Enter para hacer tu elección...")  # Espera a que el jugador 2 presione Enter
-        eleccion_jugador2 = seleccionar_eleccion()  # Obtiene la elección del jugador 2
-
+        input(f"{jugador2_nombre}, presiona Enter para hacer tu elección...")
+        eleccion_jugador2 = seleccionar_eleccion() 
         print(f"{jugador1_nombre} eligió: {eleccion_jugador1} | {jugador2_nombre} eligió: {eleccion_jugador2}")
 
-        # Lógica para determinar el ganador de la ronda
+        
         if eleccion_jugador1 == eleccion_jugador2:
             print("¡Es un empate!")
         elif (eleccion_jugador1 == "piedra" and eleccion_jugador2 == "tijeras") or \
              (eleccion_jugador1 == "papel" and eleccion_jugador2 == "piedra") or \
              (eleccion_jugador1 == "tijeras" and eleccion_jugador2 == "papel"):
-            print(f"{jugador1_nombre} gana esta ronda!")  # Si el jugador 1 gana
-            puntos_jugador1 += 1  # Aumenta los puntos del jugador 1
+            print(f"{jugador1_nombre} gana esta ronda!")  
+            puntos_jugador1 += 1  
         else:
-            print(f"{jugador2_nombre} gana esta ronda!")  # Si el jugador 2 gana
-            puntos_jugador2 += 1  # Aumenta los puntos del jugador 2
+            print(f"{jugador2_nombre} gana esta ronda!")  
+            puntos_jugador2 += 1  
 
-        # Verifica si se alcanzó el número de rondas
+       
         if rondas is not None and ronda_actual >= rondas:
-            break  # Si se alcanzó el límite de rondas, termina el juego
+            break  
         
         if rondas is None:
-            if not seguir_jugando():  # Llama a la función para preguntar si desea seguir jugando
-                break  # Si el jugador no quiere continuar, termina el juego
-        input("Presiona Enter para continuar...")  # Espera a que ambos jugadores presionen Enter para continuar
-        ronda_actual += 1  # Incrementa el contador de rondas
+            if not seguir_jugando():  
+                break  
+        input("Presiona Enter para continuar...")  
+        ronda_actual += 1  
 
-    # Muestra el resultado final después de todas las rondas
+    
     print(f"\nResultado final: {jugador1_nombre}: {puntos_jugador1} - {jugador2_nombre}: {puntos_jugador2}")
-    # Almacena las estadísticas de la partida en la lista global
+    
     registro_partidas.append(f"Jugador1: {jugador1_nombre} | Jugador2: {jugador2_nombre} | Rondas jugadas: {ronda_actual-1} | Ganó: {puntos_jugador1} | Ganó: {puntos_jugador2}")
     input("Presiona Enter para continuar...")
 
 # Función para mostrar las estadísticas de las partidas jugadas
 def ver_estadisticas():
-    limpiar_pantalla()  # Limpia la pantalla antes de mostrar las estadísticas
-    if registro_partidas:  # Verifica si hay estadísticas registradas
-        for partida in registro_partidas:  # Muestra cada registro de partida
+    limpiar_pantalla()  
+    if registro_partidas:  
+        for partida in registro_partidas:  
             print(partida)
     else:
-        print("No hay estadísticas disponibles.")  # Muestra un mensaje si no hay estadísticas
+        print("No hay estadísticas disponibles.")  
     input("Presiona Enter para volver al menú principal...")
 
-# Función principal que ejecuta el juego
+
 def ejecutar_juego():
     while True:
-        mostrar_menu_inicial()  # Muestra el menú inicial
-        seleccion = input("Selecciona una opción: ")  # Solicita la opción elegida por el jugador
+        mostrar_menu_inicial()  
+        seleccion = input("Selecciona una opción: ")  
 
         if seleccion == "1":
             registro_partidas.clear()
             while True:
-                menu_opciones_juego()  # Muestra las opciones de juego
-                opcion_juego = input("Selecciona una opción del menú de juego: ")  # Solicita la opción del jugador
+                menu_opciones_juego()  
+                opcion_juego = input("Selecciona una opción del menú de juego: ")  
 
                 if opcion_juego == "1":
-                    jugar_con_computadora()  # Llama a la función para jugar contra la computadora
+                    jugar_con_computadora()  
                 elif opcion_juego == "2":
-                    jugar_en_pareja()  # Llama a la función para jugar en pareja
+                    jugar_en_pareja()  
                 elif opcion_juego == "3":
-                    ver_estadisticas()  # Muestra las estadísticas
+                    ver_estadisticas()  
                 elif opcion_juego == "4":
-                    break  # Regresa al menú principal
+                    break  
                 else:
-                    print("Opción no válida.")  # Mensaje si la opción no es válida
+                    print("Opción no válida.")  
         elif seleccion == "2":
-            mostrar_instrucciones()  # Muestra las instrucciones del juego
+            mostrar_instrucciones()  
         elif seleccion == "3":
-            limpiar_pantalla()  # Limpia la pantalla y termina el juego
+            limpiar_pantalla()  
             print("¡Hasta la próxima!")
-            break  # Sale del juego
+            break  
         else:
-            print("Opción no válida.")  # Mensaje si la opción no es válida
+            print("Opción no válida.")  
 
-# Ejecutar el juego
-ejecutar_juego()  # Llama a la función principal para ejecutar el juego
+
+ejecutar_juego()  
+
